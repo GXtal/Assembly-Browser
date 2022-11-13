@@ -24,6 +24,10 @@
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="80"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
         <Grid>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*" />
@@ -37,6 +41,14 @@
             <Button Grid.Column="1" Command="{Binding SearchCommand}" HorizontalAlignment="Right">Выбрать файл</Button>
             <Button Grid.Column="1" Grid.Row="1" Command="{Binding CheckCommand}" HorizontalAlignment="Right">Проверить файл</Button>
         </Grid>
-        
+        <TreeView Grid.Column="0" Grid.Row="1" ItemsSource="{Binding Tree.Childs}" >
+            <TreeView.ItemTemplate>
+                <HierarchicalDataTemplate ItemsSource="{Binding Path=Childs}">
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="{Binding Info}"/>
+                    </StackPanel>
+                </HierarchicalDataTemplate>
+            </TreeView.ItemTemplate>
+        </TreeView>
     </Grid>
 </Window>

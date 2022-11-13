@@ -1,5 +1,6 @@
 ﻿
 using AssemblyBrowserLibrary;
+using AssemblyBrowserLibrary.Elements;
 using Microsoft.Win32;
 using System;
 using System.Collections.ObjectModel;
@@ -34,6 +35,16 @@ namespace AssemblyBrowserWindow
             }
         }
 
+        private Element _tree;
+        public Element Tree
+        {
+            get { return _tree; }
+            set
+            {
+                _tree = value;
+                OnPropertyChanged("Tree");
+            }
+        }
         public ViewModel()
         {
             SearchCommand = new RelayCommand(
@@ -48,7 +59,8 @@ namespace AssemblyBrowserWindow
             CheckCommand = new RelayCommand(
                obj =>
                {
-                   assemblyBrowser.WorkWith(Path);
+                   //assemblyBrowser.WorkWith(Path);
+                   Tree=assemblyBrowser.Temp();
                });
 
             Path = "Nya";

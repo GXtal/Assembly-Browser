@@ -6,24 +6,24 @@ using System.Threading.Tasks;
 
 namespace AssemblyBrowserLibrary.Elements
 {
-    public class TreeHeaad:Element
+    public class TypeElement : Element
     {
-        public TreeHeaad()
+        public TypeElement()
         {
             Childs = new List<Element>();
             Name = "nyanyanaynaynaynay";
         }
-        public TreeHeaad(bool a)
+        public TypeElement(string name, bool a)
         {
             Childs = new List<Element>();
-            Name = "nyanyanaynaynaynay";
-            Childs.Add(new NameSpaceElement("uhuhu",true));
-            Childs.Add(new NameSpaceElement("uhusaudhau", true));
+            Name = name;
+            Childs.Add(new FieldElement("nyasaasas","int"));
+            Childs.Add(new FieldElement("uhasasah", "string"));
         }
 
-        public virtual string Info
+        public override string Info
         {
-            get { return "treehead"; }
+            get { return Name; }
         }
     }
 }

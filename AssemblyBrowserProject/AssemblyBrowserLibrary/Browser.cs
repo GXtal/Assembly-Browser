@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AssemblyBrowserLibrary.Elements;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
@@ -19,8 +20,15 @@ namespace AssemblyBrowserLibrary
         public void WorkWith(string path)
         {
             workingAssembly = Assembly.LoadFrom(path);
-            var allTypes = workingAssembly.GetTypes();
+            //var allTypes = workingAssembly.GetTypes();
+            
 
+        }
+
+        public Element Temp()
+        {
+            var c = new TreeHeaad(true);
+            return c;
         }
     }
 }
