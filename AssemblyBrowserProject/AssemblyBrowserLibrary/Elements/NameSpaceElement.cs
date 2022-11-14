@@ -8,6 +8,15 @@ namespace AssemblyBrowserLibrary.Elements
 {
     public class NameSpaceElement:Element
     {
+        public NameSpaceElement(string name, List<Type> types)
+        {
+            Name = name;
+            Childs = new List<Element>();
+            foreach(var type in types)
+            {
+                Childs.Add(new TypeElement(type));
+            }
+        }
         public NameSpaceElement(string name, bool a)
         {
             Childs = new List<Element>();
@@ -15,5 +24,7 @@ namespace AssemblyBrowserLibrary.Elements
             Childs.Add(new TypeElement("nya", true));
             Childs.Add(new TypeElement("uhh", true));
         }
+
+        public override string Info { get { return "namespace" + " " + Name; } }
     }
 }

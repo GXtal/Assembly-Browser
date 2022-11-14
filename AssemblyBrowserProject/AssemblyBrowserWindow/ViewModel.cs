@@ -59,8 +59,8 @@ namespace AssemblyBrowserWindow
             CheckCommand = new RelayCommand(
                obj =>
                {
-                   //assemblyBrowser.WorkWith(Path);
-                   Tree=assemblyBrowser.Temp();
+                   Tree=assemblyBrowser.WorkWith(Path);
+                   //Tree=assemblyBrowser.Temp();
                });
 
             Path = "Nya";

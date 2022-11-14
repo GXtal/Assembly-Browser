@@ -8,10 +8,14 @@ namespace AssemblyBrowserLibrary.Elements
 {
     public class TreeHeaad:Element
     {
-        public TreeHeaad()
+        public TreeHeaad(Dictionary<string, List<Type>> allTypes)
         {
             Childs = new List<Element>();
-            Name = "nyanyanaynaynaynay";
+            Name = "ok";
+            foreach(var space in allTypes.Keys)
+            {
+                Childs.Add(new NameSpaceElement(space, allTypes[space]));
+            }
         }
         public TreeHeaad(bool a)
         {
@@ -21,6 +25,11 @@ namespace AssemblyBrowserLibrary.Elements
             Childs.Add(new NameSpaceElement("uhusaudhau", true));
         }
 
+        public TreeHeaad(string message)
+        {
+            Name = message;
+            Childs = null;
+        }
         public virtual string Info
         {
             get { return "treehead"; }
