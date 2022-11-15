@@ -18,7 +18,7 @@ namespace AssemblyBrowserLibrary.Elements
             {
                 if(!type.IsDefined(typeof(CompilerGeneratedAttribute),false))
                 {
-                    List<MethodInfo> tempe;
+                    
                     var temp = new TypeElement(type,ref exts);
                     
                     if(temp!=null)
@@ -30,6 +30,27 @@ namespace AssemblyBrowserLibrary.Elements
                 
             }
         }
+        public NameSpaceElement(string name, List<Type> types)
+        {
+            Name = name;
+            Childs = new List<Element>();
+            foreach (var type in types)
+            {
+                if (!type.IsDefined(typeof(CompilerGeneratedAttribute), false))
+                {
+                    
+                    var temp = new TypeElement(type,true);
+
+                    if (temp != null)
+                    {
+                        Childs.Add(temp);
+                    }
+
+                }
+
+            }
+        }
+
         public NameSpaceElement(string name, bool a)
         {
             Childs = new List<Element>();
@@ -52,7 +73,7 @@ namespace AssemblyBrowserLibrary.Elements
             }
             if(!result)
             {
-
+                
             }
         }
         public override string Info { get { return "namespace" + " " + Name; } }

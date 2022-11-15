@@ -12,5 +12,10 @@ namespace TestClasses
         {
             return "uuu";
         }
+
+        public static string Nya(this string ms)
+        {
+            return "nya";
+        }
     }
 }

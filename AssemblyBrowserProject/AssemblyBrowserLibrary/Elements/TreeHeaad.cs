@@ -51,7 +51,18 @@ namespace AssemblyBrowserLibrary.Elements
             }
             if(!result)
             {
+                var exts = new List<Type>();
+                exts.Add(baseType);
                 
+                Childs.Add(new NameSpaceElement(baseType.Namespace, exts));
+                foreach (var space in Childs)
+                {
+                    if (space.Name == baseType.Namespace)
+                    {
+                        space.AddExt(baseType.Name, ext);
+                        break;
+                    }
+                }
             }
         }
 

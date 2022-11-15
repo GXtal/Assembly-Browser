@@ -52,6 +52,19 @@ namespace AssemblyBrowserLibrary.Elements
                 
             }
         }
+
+        public TypeElement(Type type,bool falg)
+        {
+            Name = type.Name;
+            Additions = "";
+            if (type.IsAbstract)
+                Additions += "abstract ";
+            else if (type.IsSealed)
+                Additions += "sealed ";
+
+            Childs = new List<Element>();
+            
+        }
         public TypeElement(string name, bool a)
         {
             Childs = new List<Element>();
