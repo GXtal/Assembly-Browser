@@ -37,7 +37,7 @@
                 <RowDefinition Height="40"/>
                 <RowDefinition Height="40"/>
             </Grid.RowDefinitions>
-            <TextBox Grid.Column="0" Text="{Binding Path}" Width="400" HorizontalAlignment="Left" IsReadOnly="True" />
+            <TextBox Grid.Column="0" Text="{Binding Path}" Width="500" HorizontalAlignment="Left" IsReadOnly="True" />
             <Button Grid.Column="1" Command="{Binding SearchCommand}" HorizontalAlignment="Right">Выбрать файл</Button>
             <Button Grid.Column="1" Grid.Row="1" Command="{Binding CheckCommand}" HorizontalAlignment="Right">Проверить файл</Button>
         </Grid>

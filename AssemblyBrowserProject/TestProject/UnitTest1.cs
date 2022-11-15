@@ -28,7 +28,7 @@ namespace TestProject
             Browser browser = new Browser();
 
             var tree = browser.WorkWith("TestClasses.dll");
-            Assert.That(tree.Childs.Count, Is.EqualTo(1));
+            Assert.That(tree.Childs.Count, Is.EqualTo(2));
         }
 
         [Test]
@@ -104,6 +104,20 @@ namespace TestProject
             Assert.Multiple(() =>
             {
                 Assert.That(tree.Childs[0].Childs[0].Childs.Count, Is.EqualTo(11));
+            });
+        }
+
+        [Test]
+        public void ExternalExtensions_Test()
+        {
+            Browser browser = new Browser();
+
+            var tree = browser.WorkWith("TestClasses.dll");
+
+            Assert.Multiple(() =>
+            {
+                Assert.That(tree.Childs.Count, Is.EqualTo(2));
+                Assert.That(tree.Childs[1].Childs[0].Childs.Count, Is.EqualTo(1));
             });
         }
     }
