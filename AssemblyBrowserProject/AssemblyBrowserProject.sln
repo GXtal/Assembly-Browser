@@ -7,7 +7,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AssemblyBrowserWindow", "As
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AssemblyBrowserLibrary", "AssemblyBrowserLibrary\AssemblyBrowserLibrary.csproj", "{CEE93B0D-A5F1-4721-B7E2-D7E5226AB85F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestClasses", "TestClasses\TestClasses.csproj", "{D493EB9A-0638-41DA-B8BD-A01A4FF2ECFC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestClasses", "TestClasses\TestClasses.csproj", "{D493EB9A-0638-41DA-B8BD-A01A4FF2ECFC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestProject", "TestProject\TestProject.csproj", "{B0A9CBA7-6BB1-4C07-B813-17D3B9023540}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,6 +29,10 @@ Global
 		{D493EB9A-0638-41DA-B8BD-A01A4FF2ECFC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D493EB9A-0638-41DA-B8BD-A01A4FF2ECFC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D493EB9A-0638-41DA-B8BD-A01A4FF2ECFC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B0A9CBA7-6BB1-4C07-B813-17D3B9023540}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B0A9CBA7-6BB1-4C07-B813-17D3B9023540}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B0A9CBA7-6BB1-4C07-B813-17D3B9023540}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B0A9CBA7-6BB1-4C07-B813-17D3B9023540}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
