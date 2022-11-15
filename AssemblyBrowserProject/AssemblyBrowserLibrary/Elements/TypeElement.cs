@@ -61,6 +61,10 @@ namespace AssemblyBrowserLibrary.Elements
             Childs.Add(new FieldElement("uhasasah", "string"));
         }
 
+        public override void AddExt(string baseType, MethodInfo method)
+        {
+            Childs.Add(new MethodElement(method,true));
+        }
         public override string Info
         {
             get { return Additions+Name; }

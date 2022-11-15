@@ -47,6 +47,37 @@ namespace AssemblyBrowserLibrary.Elements
             }
         }
 
+        public MethodElement(MethodInfo methodInfo,bool flag)
+        {
+            Childs = null;
+            Name = methodInfo.Name;
+            Visability = "extension";
+            if (methodInfo.IsPublic)
+                Visability += " public";
+            else if (methodInfo.IsPrivate)
+                Visability += " private";
+            else if (methodInfo.IsAssembly)
+                Visability += " internal";
+            if (methodInfo.IsFamily)
+                Visability += " protected";
+            ReturnTypeName = TypeName(methodInfo.ReturnType);
+            var parametrs = methodInfo.GetParameters();
+            Parametrs = new string[parametrs.Length-1];
+            for (int i = 1; i < parametrs.Length; i++)
+            {
+                if (parametrs[i].IsOut)
+                {
+                    Parametrs[i-1] = "out ";
+                }
+                else if (parametrs[i].ParameterType.IsByRef)
+                {
+                    Parametrs[i-1] = "ref ";
+                }
+                else Parametrs[i-1] = "";
+                Parametrs[i-1] += TypeName(parametrs[i].ParameterType);
+                Parametrs[i-1] += " " + parametrs[i].Name;
+            }
+        }
         public override string Info
         {
             get {

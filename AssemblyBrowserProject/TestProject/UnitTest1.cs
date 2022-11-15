@@ -94,5 +94,17 @@ namespace TestProject
                 Assert.That(result.Childs.Count, Is.EqualTo(10));
             });
         }
+        [Test]
+        public void Extensions_Test()
+        {
+            Browser browser = new Browser();
+
+            var tree = browser.WorkWith("TestClasses.dll");
+
+            Assert.Multiple(() =>
+            {
+                Assert.That(tree.Childs[0].Childs[0].Childs.Count, Is.EqualTo(11));
+            });
+        }
     }
 }
