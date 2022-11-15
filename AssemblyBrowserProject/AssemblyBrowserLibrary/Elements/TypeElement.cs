@@ -11,7 +11,7 @@ namespace AssemblyBrowserLibrary.Elements
     public class TypeElement : Element
     {
         public string Additions;
-        public TypeElement(Type type)
+        public TypeElement(Type type, ref List<MethodInfo> exts)
         {
             Name=type.Name;
             Additions = "";
@@ -19,8 +19,9 @@ namespace AssemblyBrowserLibrary.Elements
                 Additions+="abstract ";
             else if (type.IsSealed)
                 Additions+="sealed ";
+            
             Childs = new List<Element>();
-            FieldInfo[] fields = type.GetFields(BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance);
+            FieldInfo[] fields = type.GetFields(BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance|BindingFlags.Static);
             foreach(FieldInfo fieldInfo in fields)
             {
                 if(!fieldInfo.IsDefined(typeof(CompilerGeneratedAttribute)))
@@ -29,15 +30,21 @@ namespace AssemblyBrowserLibrary.Elements
                 }
                 
             }
-            PropertyInfo[] properties = type.GetProperties(BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance);
+            PropertyInfo[] properties = type.GetProperties(BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance| BindingFlags.Static);
             foreach(PropertyInfo propertyInfo in properties)
             {
                 Childs.Add(new PropertyElement(propertyInfo));
             }
-
-            MethodInfo[] methods = type.GetMethods(BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance);
+            
+            
+            MethodInfo[] methods = type.GetMethods(BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance|BindingFlags.Static);
             foreach (MethodInfo methodInfo in methods)
             {
+                if(methodInfo.IsDefined(typeof(ExtensionAttribute)))
+                {
+                    exts.Add(methodInfo);
+                }
+                else
                 if(!methodInfo.IsDefined(typeof(CompilerGeneratedAttribute)))
                 {
                     Childs.Add(new MethodElement(methodInfo));

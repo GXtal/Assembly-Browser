@@ -1,4 +1,5 @@
-﻿using System.Text;
+﻿using System.Reflection;
+using System.Text;
 
 namespace AssemblyBrowserLibrary.Elements
 {
@@ -47,5 +48,9 @@ namespace AssemblyBrowserLibrary.Elements
             return sb.ToString();
         }
 
+        public virtual void AddExt(string baseType,MethodInfo method)
+        {
+
+        }
     }
 }
