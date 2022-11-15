@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -14,7 +15,11 @@ namespace AssemblyBrowserLibrary.Elements
             Childs = new List<Element>();
             foreach(var type in types)
             {
-                Childs.Add(new TypeElement(type));
+                if(!type.IsDefined(typeof(CompilerGeneratedAttribute),false))
+                {
+                    Childs.Add(new TypeElement(type));
+                }
+                
             }
         }
         public NameSpaceElement(string name, bool a)

@@ -14,7 +14,12 @@ namespace AssemblyBrowserLibrary.Elements
             Name = "ok";
             foreach(var space in allTypes.Keys)
             {
-                Childs.Add(new NameSpaceElement(space, allTypes[space]));
+                var temp = new NameSpaceElement(space, allTypes[space]);
+                if(temp.Childs.Count > 0)
+                {
+                    Childs.Add(temp);
+                }
+                
             }
         }
         public TreeHeaad(bool a)

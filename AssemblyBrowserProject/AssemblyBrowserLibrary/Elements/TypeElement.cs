@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -22,7 +23,7 @@ namespace AssemblyBrowserLibrary.Elements
             FieldInfo[] fields = type.GetFields(BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance);
             foreach(FieldInfo fieldInfo in fields)
             {
-                if(!fieldInfo.Name.StartsWith('<'))
+                if(!fieldInfo.IsDefined(typeof(CompilerGeneratedAttribute)))
                 {
                     Childs.Add(new FieldElement(fieldInfo));
                 }
@@ -37,7 +38,11 @@ namespace AssemblyBrowserLibrary.Elements
             MethodInfo[] methods = type.GetMethods(BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance);
             foreach (MethodInfo methodInfo in methods)
             {
-                Childs.Add(new MethodElement(methodInfo));
+                if(!methodInfo.IsDefined(typeof(CompilerGeneratedAttribute)))
+                {
+                    Childs.Add(new MethodElement(methodInfo));
+                }
+                
             }
         }
         public TypeElement(string name, bool a)
